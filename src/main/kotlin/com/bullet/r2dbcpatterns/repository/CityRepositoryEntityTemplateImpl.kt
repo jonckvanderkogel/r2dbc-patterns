@@ -49,6 +49,7 @@ class CityRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): CityR
                     beer
                 ON
                     bb.beer_id = beer.id
+                ORDER BY bar.id, beer.id
             """.trimIndent())
             .bind("$1", insert.name)
             .fetch()
@@ -90,6 +91,7 @@ class CityRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): CityR
                     beer
                 ON
                     bb.beer_id = beer.id
+                ORDER BY bar.id, beer.id
             """.trimIndent())
             .bind("$1", update.id)
             .bind("$2", update.name)
@@ -128,6 +130,7 @@ class CityRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): CityR
                     bb.beer_id = beer.id
                 WHERE
                     city.id = $1
+                ORDER BY bar.id, beer.id
             """.trimIndent())
             .bind("$1", id)
             .fetch()
@@ -163,6 +166,7 @@ class CityRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): CityR
                     beer
                 ON
                     bb.beer_id = beer.id
+                ORDER BY city.id, bar.id, beer.id
             """.trimIndent())
             .fetch()
             .all()

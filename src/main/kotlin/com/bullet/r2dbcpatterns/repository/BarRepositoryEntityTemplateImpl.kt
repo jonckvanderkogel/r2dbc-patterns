@@ -43,6 +43,7 @@ class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRep
                     beer
                 ON
                     bb.beer_id = beer.id
+                ORDER BY beer.id
             """.trimIndent())
             .bind("$1", insert.name)
             .bind("$2", insert.cityId)
@@ -79,6 +80,7 @@ class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRep
                     beer
                 ON
                     bb.beer_id = beer.id
+                ORDER BY beer.id
             """.trimIndent())
             .bind("$1", update.id)
             .bind("$2", update.name)
@@ -112,6 +114,7 @@ class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRep
                     bb.beer_id = beer.id
                 WHERE
                     bar.id = $1
+                ORDER BY beer.id
             """.trimIndent())
             .bind("$1", id)
             .fetch()
@@ -141,6 +144,7 @@ class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRep
                     beer
                 ON
                     bb.beer_id = beer.id
+                ORDER BY bar.id, beer.id
             """.trimIndent())
             .fetch()
             .all()
