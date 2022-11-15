@@ -1,0 +1,58 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="jonck" id="create_city_table">
+        <createTable tableName="city">
+            <column name="id" type="BIGSERIAL" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="city_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jonck" id="create_bar_table">
+        <createTable tableName="bar">
+            <column name="id" type="BIGSERIAL" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="bar_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="bar" constraintName="bar_city_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="city"/>
+    </changeSet>
+    <changeSet author="jonck" id="create_beer_table">
+        <createTable tableName="beer">
+            <column name="id" type="BIGSERIAL" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="beer_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="style" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jonck" id="create_bar_beer_table">
+        <createTable tableName="bar_beer">
+            <column name="id" type="BIGSERIAL" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="bar_beer_pk"/>
+            </column>
+            <column name="bar_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="beer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint columnNames="bar_id,beer_id" constraintName="bar_beer_bar_id_beer_id" tableName="bar_beer"/>
+        <addForeignKeyConstraint baseColumnNames="bar_id" baseTableName="bar_beer" constraintName="bar_beer_bar_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="bar"/>
+        <addForeignKeyConstraint baseColumnNames="beer_id" baseTableName="bar_beer" constraintName="bar_beer_beer_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="beer"/>
+    </changeSet>
+</databaseChangeLog>
