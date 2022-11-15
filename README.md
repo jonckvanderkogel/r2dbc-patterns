@@ -19,6 +19,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"name":"Amsterdam"}' http:
 curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Frontaal Bar", "cityId": 1}' http://localhost:8080/bar
 curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Brewpub De Kromme Haring", "cityId": 1}' http://localhost:8080/bar
 curl -i -H "Content-Type: application/json" -X POST -d '{"name":"vandeStreek Bier", "cityId": 1}' http://localhost:8080/bar
+curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Hoekenrode", "cityId": 2}' http://localhost:8080/bar
 
 # Create beers
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Juice Punch", "style":"IPA"}' http://localhost:8080/beer
@@ -27,6 +28,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"name":"Kia Ora", "style":
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Opah", "style":"IPA"}' http://localhost:8080/beer
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Mudskipper", "style":"IPA"}' http://localhost:8080/beer
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Cuttlefish Idaho 7", "style":"IPA"}' http://localhost:8080/beer
+curl -H "Content-Type: application/json" -X POST -d '{"name":"Erdinger", "style":"WEIZEN"}' http://localhost:8080/beer
 
 # Associate beers with bars
 curl -H "Content-Type: application/json" -X POST -d '{"barId":1, "beerId": 1}' http://localhost:8080/barbeer
@@ -35,6 +37,7 @@ curl -H "Content-Type: application/json" -X POST -d '{"barId":1, "beerId": 3}' h
 curl -H "Content-Type: application/json" -X POST -d '{"barId":2, "beerId": 4}' http://localhost:8080/barbeer
 curl -H "Content-Type: application/json" -X POST -d '{"barId":2, "beerId": 5}' http://localhost:8080/barbeer
 curl -H "Content-Type: application/json" -X POST -d '{"barId":2, "beerId": 6}' http://localhost:8080/barbeer
+curl -H "Content-Type: application/json" -X POST -d '{"barId":4, "beerId": 7}' http://localhost:8080/barbeer
 
 # Get city 1
 curl "http://localhost:8080/city?id=1"
