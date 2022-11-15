@@ -5,8 +5,8 @@ import com.bullet.r2dbcpatterns.domain.BarBeer
 import com.fasterxml.jackson.annotation.JsonInclude
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class BarBeerDTO(val barId: Long, val beerId: Long) {
+data class BarBeerDTO(val id: Long? = null, val barId: Long, val beerId: Long) {
     companion object {
-        fun of(barBeer: BarBeer): BarBeerDTO = BarBeerDTO(barBeer.barId, barBeer.beerId)
+        fun of(barBeer: BarBeer): BarBeerDTO = BarBeerDTO(barBeer.id, barBeer.barId, barBeer.beerId)
     }
 }

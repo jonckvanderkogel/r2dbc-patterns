@@ -15,7 +15,7 @@ enum class BeerStyle {
     LAGER,BLOND,IPA,DOUBLE,TRIPLE,BOCK,BITTER,WEIZEN,SOUR,UNKNOWN;
 
     companion object {
-        private val enumMap: Map<String, BeerStyle> = values().associateBy { it.name }
-        fun fromString(name: String): BeerStyle = enumMap.getOrDefault(name, UNKNOWN)
+        private val enumMap: Map<String, BeerStyle> = values().associateBy { it.name.lowercase() }
+        fun fromString(name: String): BeerStyle = enumMap.getOrDefault(name.lowercase(), UNKNOWN)
     }
 }

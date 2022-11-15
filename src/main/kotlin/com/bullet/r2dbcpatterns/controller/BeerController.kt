@@ -25,7 +25,7 @@ class BeerController(val beerService: BeerService) {
      */
     @PutMapping(consumes = [MediaType.APPLICATION_JSON_VALUE], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun update(@RequestBody beerInput: BeerInput): Mono<BeerDTO> = beerService
-        .save(beerInput)
+        .update(beerInput)
         .map { BeerDTO.of(it) }
         .switchIfEmpty(Mono.error(IllegalArgumentException("Could not update beer with id ${beerInput.id}")))
 

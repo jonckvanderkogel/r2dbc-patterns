@@ -6,6 +6,7 @@ import com.bullet.r2dbcpatterns.domain.Bar
 import com.bullet.r2dbcpatterns.domain.Beer
 import com.bullet.r2dbcpatterns.domain.BeerStyle
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRepositoryEntityTemplate {
@@ -87,6 +88,64 @@ class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRep
             .bufferUntilChanged{ result -> result.get("bar.id") }
             .map { constructBar(it) }
             .next()
+    }
+
+    override fun get(id: Long): Mono<Bar> {
+        return template.databaseClient
+            .sql("""
+                SELECT
+                    bar.id AS "bar.id",
+                    bar.name AS "bar.name",
+                    bb.id AS "bar_beer.id",
+                    beer.id AS "beer.id",
+                    beer.name AS "beer.name",
+                    beer.style AS "beer.style"
+                FROM
+                    bar
+                LEFT JOIN
+                    bar_beer AS bb
+                ON
+                    bb.bar_id = bar.id
+                LEFT JOIN
+                    beer
+                ON
+                    bb.beer_id = beer.id
+                WHERE
+                    bar.id = $1
+            """.trimIndent())
+            .bind("$1", id)
+            .fetch()
+            .all()
+            .bufferUntilChanged{ result -> result.get("bar.id") }
+            .map { constructBar(it) }
+            .next()
+    }
+
+    override fun getAll(): Flux<Bar> {
+        return template.databaseClient
+            .sql("""
+                SELECT
+                    bar.id AS "bar.id",
+                    bar.name AS "bar.name",
+                    bb.id AS "bar_beer.id",
+                    beer.id AS "beer.id",
+                    beer.name AS "beer.name",
+                    beer.style AS "beer.style"
+                FROM
+                    bar
+                LEFT JOIN
+                    bar_beer AS bb
+                ON
+                    bb.bar_id = bar.id
+                LEFT JOIN
+                    beer
+                ON
+                    bb.beer_id = beer.id
+            """.trimIndent())
+            .fetch()
+            .all()
+            .bufferUntilChanged{ result -> result.get("bar.id") }
+            .map { constructBar(it) }
     }
 
     private fun constructBar(data: List<Map<String, Any>>): Bar {

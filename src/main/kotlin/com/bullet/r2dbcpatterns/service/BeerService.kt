@@ -11,6 +11,8 @@ import reactor.core.publisher.Mono
 class BeerService(private val beerRepository: BeerRepository) {
     fun save(beerInput: BeerInput): Mono<Beer> = beerRepository.save(Beer.of(beerInput))
 
+    fun update(beerInput: BeerInput): Mono<Beer> = beerRepository.save(Beer.of(beerInput))
+
     fun get(id: Long): Mono<Beer> = beerRepository.findById(id)
 
     fun getAll(): Flux<Beer> = beerRepository.findAll()
