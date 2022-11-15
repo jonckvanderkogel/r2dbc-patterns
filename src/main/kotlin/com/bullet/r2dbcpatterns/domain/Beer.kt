@@ -12,7 +12,7 @@ data class Beer(@Id val id: Long? = null, val name: String, val style: BeerStyle
 }
 
 enum class BeerStyle {
-    LAGER,BLOND,IPA,DOUBLE,TRIPLE,BOCK,BITTER,WEIZEN,SOUR,UNKNOWN;
+    LAGER,BLOND,IPA,STOUT,DOUBLE,TRIPLE,BOCK,BITTER,WEIZEN,SOUR,UNKNOWN;
 
     companion object {
         private val enumMap: Map<String, BeerStyle> = values().associateBy { it.name.lowercase() }

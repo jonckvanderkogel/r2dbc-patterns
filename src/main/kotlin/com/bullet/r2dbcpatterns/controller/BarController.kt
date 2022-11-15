@@ -2,10 +2,7 @@ package com.bullet.r2dbcpatterns.controller
 
 import com.bullet.r2dbcpatterns.dbinput.BarInsert
 import com.bullet.r2dbcpatterns.dbinput.BarUpdate
-import com.bullet.r2dbcpatterns.dbinput.CityUpdate
 import com.bullet.r2dbcpatterns.dto.BarDTO
-import com.bullet.r2dbcpatterns.dto.BeerDTO
-import com.bullet.r2dbcpatterns.dto.CityDTO
 import com.bullet.r2dbcpatterns.service.BarService
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
