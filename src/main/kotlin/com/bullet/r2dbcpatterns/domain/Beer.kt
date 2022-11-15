@@ -1,6 +1,6 @@
 package com.bullet.r2dbcpatterns.domain
 
-import com.bullet.r2dbcpatterns.dbinput.BeerInput
+import com.bullet.r2dbcpatterns.messages.BeerInput
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 

@@ -1,7 +1,7 @@
 package com.bullet.r2dbcpatterns.controller
 
-import com.bullet.r2dbcpatterns.dbinput.CityInsert
-import com.bullet.r2dbcpatterns.dbinput.CityUpdate
+import com.bullet.r2dbcpatterns.messages.CityInsert
+import com.bullet.r2dbcpatterns.messages.CityUpdate
 import com.bullet.r2dbcpatterns.dto.CityDTO
 import com.bullet.r2dbcpatterns.service.CityService
 import org.springframework.http.MediaType

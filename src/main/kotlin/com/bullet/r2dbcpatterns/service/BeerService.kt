@@ -1,6 +1,6 @@
 package com.bullet.r2dbcpatterns.service
 
-import com.bullet.r2dbcpatterns.dbinput.BeerInput
+import com.bullet.r2dbcpatterns.messages.BeerInput
 import com.bullet.r2dbcpatterns.domain.Beer
 import com.bullet.r2dbcpatterns.repository.BeerRepository
 import org.springframework.stereotype.Service

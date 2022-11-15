@@ -1,6 +1,6 @@
 package com.bullet.r2dbcpatterns.controller
 
-import com.bullet.r2dbcpatterns.dbinput.BarBeerInsert
+import com.bullet.r2dbcpatterns.messages.BarBeerInsert
 import com.bullet.r2dbcpatterns.dto.BarBeerDTO
 import com.bullet.r2dbcpatterns.service.BarBeerService
 import org.springframework.http.MediaType

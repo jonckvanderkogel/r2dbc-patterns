@@ -1,7 +1,7 @@
 package com.bullet.r2dbcpatterns.service
 
-import com.bullet.r2dbcpatterns.dbinput.CityInsert
-import com.bullet.r2dbcpatterns.dbinput.CityUpdate
+import com.bullet.r2dbcpatterns.messages.CityInsert
+import com.bullet.r2dbcpatterns.messages.CityUpdate
 import com.bullet.r2dbcpatterns.domain.City
 import com.bullet.r2dbcpatterns.repository.CityRepository
 import org.springframework.stereotype.Service

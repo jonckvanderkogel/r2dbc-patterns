@@ -1,7 +1,7 @@
 package com.bullet.r2dbcpatterns.repository
 
-import com.bullet.r2dbcpatterns.dbinput.BarInsert
-import com.bullet.r2dbcpatterns.dbinput.BarUpdate
+import com.bullet.r2dbcpatterns.messages.BarInsert
+import com.bullet.r2dbcpatterns.messages.BarUpdate
 import com.bullet.r2dbcpatterns.domain.Bar
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono

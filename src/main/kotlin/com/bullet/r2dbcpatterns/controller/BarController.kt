@@ -1,7 +1,7 @@
 package com.bullet.r2dbcpatterns.controller
 
-import com.bullet.r2dbcpatterns.dbinput.BarInsert
-import com.bullet.r2dbcpatterns.dbinput.BarUpdate
+import com.bullet.r2dbcpatterns.messages.BarInsert
+import com.bullet.r2dbcpatterns.messages.BarUpdate
 import com.bullet.r2dbcpatterns.dto.BarDTO
 import com.bullet.r2dbcpatterns.service.BarService
 import org.springframework.http.MediaType
