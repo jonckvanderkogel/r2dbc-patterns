@@ -1,7 +1,8 @@
 package com.bullet.r2dbcpatterns.service
 
-import com.bullet.r2dbcpatterns.messages.BeerInput
 import com.bullet.r2dbcpatterns.domain.Beer
+import com.bullet.r2dbcpatterns.messages.BeerInsert
+import com.bullet.r2dbcpatterns.messages.BeerUpdate
 import com.bullet.r2dbcpatterns.repository.BeerRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -9,9 +10,9 @@ import reactor.core.publisher.Mono
 
 @Service
 class BeerService(private val beerRepository: BeerRepository) {
-    fun save(beerInput: BeerInput): Mono<Beer> = beerRepository.save(Beer.of(beerInput))
+    fun save(insert: BeerInsert): Mono<Beer> = beerRepository.saveBeer(insert)
 
-    fun update(beerInput: BeerInput): Mono<Beer> = beerRepository.save(Beer.of(beerInput))
+    fun update(input: BeerUpdate): Mono<Beer> = beerRepository.updateBeer(input)
 
     fun get(id: Long): Mono<Beer> = beerRepository.findById(id)
 

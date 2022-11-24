@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class CityDTO(@Id val id: Long? = null, val name: String, val bars: List<Bar>) {
+data class CityDTO(@Id val id: Long, val name: String, val bars: List<Bar>) {
     companion object {
         fun of(city: City): CityDTO = CityDTO(city.id, city.name, city.bars)
     }

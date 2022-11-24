@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono
 
 @Service
 class BarBeerService(val barBeerRepository: BarBeerRepository) {
-    fun save(insert: BarBeerInsert): Mono<BarBeer> = barBeerRepository.save(BarBeer.of(insert))
+    fun save(insert: BarBeerInsert): Mono<BarBeer> = barBeerRepository.saveBarBeer(insert)
 
     fun delete(id: Long): Mono<Void> = barBeerRepository.deleteById(id)
 }

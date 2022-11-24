@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<kotlin.version>1.6.21</kotlin.version>
-		<testcontainers.version>1.17.5</testcontainers.version>
+		<testcontainers.version>1.17.6</testcontainers.version>
 		<spring-jdbc.version>5.3.20</spring-jdbc.version>
 		<hikaricp.version>5.0.1</hikaricp.version>
 	</properties>
@@ -93,6 +93,12 @@
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

@@ -9,7 +9,7 @@ import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
-class BarRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): BarRepositoryEntityTemplate {
+class BarRepositoryEntityTemplateImpl(private val template: R2dbcEntityTemplate): BarRepositoryEntityTemplate {
     override fun saveBar(insert: BarInsert): Mono<Bar> {
         return template.databaseClient
             .sql("""

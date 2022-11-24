@@ -10,7 +10,7 @@ import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
-class CityRepositoryEntityTemplateImpl(val template: R2dbcEntityTemplate): CityRepositoryEntityTemplate {
+class CityRepositoryEntityTemplateImpl(private val template: R2dbcEntityTemplate): CityRepositoryEntityTemplate {
     override fun saveCity(insert: CityInsert): Mono<City> {
         return template.databaseClient
             .sql("""

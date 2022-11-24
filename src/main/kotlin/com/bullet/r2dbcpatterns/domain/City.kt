@@ -4,4 +4,4 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 
 @Table("city")
-data class City(@Id val id: Long? = null, val name: String, val bars: List<Bar>)
+data class City(@Id val id: Long, val name: String, val bars: List<Bar>)

@@ -6,6 +6,12 @@ spring:
     user: user
     password: pass
     change-log: classpath:db/changelog.xml
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/r2dbc_db
+    username: user
+    password: pass
+  profiles:
+    active: live
 
 datasource:
   host: localhost

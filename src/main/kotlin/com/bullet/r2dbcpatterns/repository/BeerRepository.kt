@@ -5,4 +5,4 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface BeerRepository: ReactiveCrudRepository<Beer, Long>
+interface BeerRepository: ReactiveCrudRepository<Beer, Long>, BeerRepositoryEntityTemplate
