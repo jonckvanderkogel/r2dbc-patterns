@@ -65,8 +65,23 @@ class BarServiceTest(
             .verify()
     }
 
+    @Test
+    @Order(4)
+    fun shouldDeleteBar() {
+        barService.delete(1L).block()
+
+        StepVerifier
+            .create(barService.get(1L))
+            .expectComplete()
+            .verify()
+
+        // Beers should nog get deleted when the bar get's deleted
+        StepVerifier
+            .create(beerService.getAll())
+            .expectNextCount(2L)
+            .expectComplete()
+            .verify()
+    }
+
 
 }
-
-private operator fun <T1, T2> Tuple2<T1, T2>.component1(): T1 = t1
-private operator fun <T1, T2> Tuple2<T1, T2>.component2(): T2 = t2

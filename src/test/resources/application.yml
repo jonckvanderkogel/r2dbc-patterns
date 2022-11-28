@@ -3,3 +3,8 @@ spring:
     allow-bean-definition-overriding: true
   liquibase:
     change-log: classpath:db/changelog.xml
+
+logging:
+  level:
+    io.r2dbc.postgresql.QUERY: DEBUG
+    io.r2dbc.postgresql.PARAM: DEBUG

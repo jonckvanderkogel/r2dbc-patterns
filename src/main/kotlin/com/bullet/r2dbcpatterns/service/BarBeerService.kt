@@ -11,4 +11,6 @@ class BarBeerService(val barBeerRepository: BarBeerRepository) {
     fun save(insert: BarBeerInsert): Mono<BarBeer> = barBeerRepository.saveBarBeer(insert)
 
     fun delete(id: Long): Mono<Void> = barBeerRepository.deleteById(id)
+
+    fun get(id: Long): Mono<BarBeer> = barBeerRepository.findById(id)
 }

@@ -7,6 +7,7 @@ import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.PostgreSQLContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
+import reactor.util.function.Tuple2
 
 
 @Testcontainers
@@ -28,6 +29,9 @@ abstract class AbstractIntegrationTest() {
             registry.add("spring.liquibase.user") { postgres.username }
             registry.add("spring.liquibase.password") { postgres.password }
         }
-    }
 
+        operator fun <T1, T2> Tuple2<T1, T2>.component1(): T1 = t1
+        operator fun <T1, T2> Tuple2<T1, T2>.component2(): T2 = t2
+    }
 }
+

@@ -21,11 +21,10 @@ class DataSourceConfig(
     @Value("\${datasource.port}")private val  port: Int
 ) {
     companion object {
-        const val POSTGRES_BEAN = "postgresLocal"
         private val logger = LoggerFactory.getLogger(DataSourceConfig::class.java)
     }
 
-    @Bean(name = [POSTGRES_BEAN])
+    @Bean
     fun createPostgreSQLContainer(): PostgreSQLContainer<*> {
         logger.info("Starting PostgreSQL container")
 

@@ -2,14 +2,14 @@ spring:
   main:
     allow-bean-definition-overriding: true
   liquibase:
-    url: jdbc:postgresql://localhost:5432/r2dbc_db
-    user: user
-    password: pass
+    url: jdbc:postgresql://localhost:${datasource.port}/${datasource.database}
+    user: ${datasource.username}
+    password: ${datasource.password}
     change-log: classpath:db/changelog.xml
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/r2dbc_db
-    username: user
-    password: pass
+    url: r2dbc:postgresql://localhost:${datasource.port}/${datasource.database}
+    username: ${datasource.username}
+    password: ${datasource.password}
   profiles:
     active: live
 
