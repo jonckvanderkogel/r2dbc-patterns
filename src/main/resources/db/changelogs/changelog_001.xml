@@ -55,4 +55,10 @@
         <addForeignKeyConstraint baseColumnNames="bar_id" baseTableName="bar_beer" constraintName="bar_beer_bar_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="bar"/>
         <addForeignKeyConstraint baseColumnNames="beer_id" baseTableName="bar_beer" constraintName="bar_beer_beer_id" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="beer"/>
     </changeSet>
+    <changeSet author="jonck" id="set_replica_identity">
+        <sql>ALTER TABLE public.bar REPLICA IDENTITY FULL</sql>
+        <sql>ALTER TABLE public.beer REPLICA IDENTITY FULL</sql>
+        <sql>ALTER TABLE public.bar_beer REPLICA IDENTITY FULL</sql>
+        <sql>ALTER TABLE public.city REPLICA IDENTITY FULL</sql>
+    </changeSet>
 </databaseChangeLog>

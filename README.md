@@ -1,13 +1,21 @@
 # Prerequisites
 Before running the API start Docker.
 
-# Start API
+# Start service
+To start the application with a built-in database:
+
 From root:
 ```
+mvn spring-boot:run -Dspring-boot.run.profiles=database
+```
+
+If you want to get your database from Docker Compose: 
+```
+docker compose up
 mvn spring-boot:run
 ```
 
-This now downloads the Postgres image, initializes the database tables and starts the API
+The service will initialize the database tables and start up.
 
 # Create some data
 ```
@@ -45,3 +53,13 @@ curl "http://localhost:8080/city?id=1"
 # Update bar
 curl -H "Content-Type: application/json" -X PUT -d '{"id": 1, "name":"Frontaal Bar", "cityId": 2}' http://localhost:8080/bar
 ```
+
+# To post the connector to Debezium:
+```
+curl -X POST -H "Content-Type: application/json" -d @connector.json http://localhost:8083/connectors/
+```
+
+Debezium will now be observing any changes on your database and will post them on Kafka, on the _r2dbc topic.
+To see the messages, navigate to [Kafka UI](http://localhost:9000)
+
+Note that you need to start up Docker Compose in order to have the necessary services in place for this.

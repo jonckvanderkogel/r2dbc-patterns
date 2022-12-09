@@ -1,5 +1,6 @@
 package com.bullet.r2dbcpatterns.controller
 
+import com.bullet.r2dbcpatterns.domain.BeerStyle
 import com.bullet.r2dbcpatterns.dto.BeerDTO
 import com.bullet.r2dbcpatterns.messages.BeerInsert
 import com.bullet.r2dbcpatterns.messages.BeerUpdate
@@ -47,6 +48,21 @@ class BeerController(val beerService: BeerService) {
         .getAll()
         .map { BeerDTO.of(it) }
         .switchIfEmpty(Mono.error(IllegalArgumentException("No beer entities in database")))
+
+    /*
+    curl "http://localhost:8080/beer/allByStyle?style=IPA"
+     */
+    @GetMapping(path = ["/allByStyle"])
+    fun getAllByStyle(style: BeerStyle): Flux<BeerDTO> = beerService
+        .findAllByStyle(style)
+        .map { BeerDTO.of(it) }
+
+    /*
+    curl "http://localhost:8080/beer/countNonAssociatedBeers"
+     */
+    @GetMapping(path = ["/countNonAssociatedBeers"])
+    fun countNonAssociatedBeers(): Mono<Int> = beerService
+        .getCountOfBeersNotAssociatedWithBar()
 
     /*
     curl -X DELETE "http://localhost:8080/beer?id=1"

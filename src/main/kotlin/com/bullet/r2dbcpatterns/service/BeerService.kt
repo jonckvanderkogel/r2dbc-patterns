@@ -1,6 +1,7 @@
 package com.bullet.r2dbcpatterns.service
 
 import com.bullet.r2dbcpatterns.domain.Beer
+import com.bullet.r2dbcpatterns.domain.BeerStyle
 import com.bullet.r2dbcpatterns.messages.BeerInsert
 import com.bullet.r2dbcpatterns.messages.BeerUpdate
 import com.bullet.r2dbcpatterns.repository.BeerRepository
@@ -19,4 +20,8 @@ class BeerService(private val beerRepository: BeerRepository) {
     fun getAll(): Flux<Beer> = beerRepository.findAll()
 
     fun delete(id: Long): Mono<Void> = beerRepository.deleteById(id)
+
+    fun findAllByStyle(style: BeerStyle): Flux<Beer> = beerRepository.findAllByStyle(style)
+
+    fun getCountOfBeersNotAssociatedWithBar(): Mono<Int> = beerRepository.getCountOfBeersNotAssociatedWithBar()
 }

@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
 import reactor.core.publisher.Flux
 import reactor.test.StepVerifier
-import reactor.util.function.Tuple2
 
 @DirtiesContext
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)

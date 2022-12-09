@@ -1,0 +1,19 @@
+{
+  "name": "r2dbc-db-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "database",
+    "database.port": "5432",
+    "database.user": "user",
+    "database.password": "pass",
+    "database.dbname" : "r2dbc_db",
+    "topic.prefix": "r2dbc",
+    "schema.include.list": "public",
+    "plugin.name": "pgoutput",
+    "transforms": "Reroute",
+    "transforms.Reroute.type": "io.debezium.transforms.ByLogicalTableRouter",
+    "transforms.Reroute.topic.regex": "(.*)r2dbc(.*)",
+    "transforms.Reroute.topic.replacement": "$1_r2dbc"
+  }
+}

@@ -10,8 +10,6 @@ spring:
     url: r2dbc:postgresql://localhost:${datasource.port}/${datasource.database}
     username: ${datasource.username}
     password: ${datasource.password}
-  profiles:
-    active: live
 
 datasource:
   host: localhost

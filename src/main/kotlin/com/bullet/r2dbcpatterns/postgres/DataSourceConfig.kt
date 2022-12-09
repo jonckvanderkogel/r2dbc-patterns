@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile
 import org.testcontainers.containers.PostgreSQLContainer
 
 
-@Profile("live")
+@Profile("database")
 @Configuration
 class DataSourceConfig(
     @Value("\${datasource.database}")private val  database: String,
